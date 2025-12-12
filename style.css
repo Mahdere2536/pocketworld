@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+}
+
+header {
+  background: #1e88e5;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+#profile {
+  margin: 20px;
+  text-align: center;
+}
+
+#profile-header {
+  position: relative;
+}
+
+#profile-upload {
+  margin-top: 10px;
+}
+
+#profile-info {
+  margin-top: 10px;
+}
+
+#profile-info button {
+  padding: 5px 10px;
+  margin-right: 10px;
+}
+
+#create-post {
+  margin: 20px;
+  text-align: center;
+}
+
+#create-post textarea {
+  width: 80%;
+  height: 50px;
+  margin: 5px 0;
+}
+
+#create-post button {
+  padding: 5px 10px;
+}
+
+#feed {
+  margin: 20px;
+}
+
+#feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.post {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post img, .post video {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.post button {
+  margin-top: 5px;
+  padding: 3px 6px;
+  font-size: 12px;
+}
