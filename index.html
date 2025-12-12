@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pocket World Prototype</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Pocket World</h1>
+  </header>
+
+  <section id="profile">
+    <div id="profile-header">
+      <video id="header-video" controls width="100%" style="display:none;"></video>
+      <img id="header-image" src="" alt="Header Image" width="100%">
+      <input type="file" id="header-upload" accept="image/*,video/*">
+    </div>
+    <div id="profile-info">
+      <h2>Username</h2>
+      <button id="follow-btn">Follow</button>
+      <span id="followers-count">0 followers</span>
+    </div>
+  </section>
+
+  <section id="create-post">
+    <h2>Create Post</h2>
+    <input type="file" id="post-upload" accept="image/*,video/*" multiple>
+    <textarea id="post-caption" placeholder="Add a caption..."></textarea>
+    <button id="post-btn">Post</button>
+  </section>
+
+  <section id="feed">
+    <h2>Feed</h2>
+    <div id="feed-grid"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
