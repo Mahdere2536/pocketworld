@@ -1,78 +1,89 @@
-// Profile header upload
-const headerUpload = document.getElementById("header-upload");
-const headerImage = document.getElementById("header-image");
-const headerVideo = document.getElementById("header-video");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PocketWorld</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-headerUpload.addEventListener("change", (e)=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  if(file.type.startsWith("video/")){
-    headerVideo.src = URL.createObjectURL(file);
-    headerVideo.style.display = "block";
-    headerImage.style.display = "none";
-  } else if(file.type.startsWith("image/")){
-    headerImage.src = URL.createObjectURL(file);
-    headerImage.style.display = "block";
-    headerVideo.style.display = "none";
-  }
-});
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">PocketWorld</div>
 
-// Follow button
-const followBtn = document.getElementById("follow-btn");
-const followersCount = document.getElementById("followers-count");
-let following = false;
-let followers = 0;
+  <div class="nav-icons">
+    <button id="homeBtn" class="nav-btn">🏠</button>
+    <button id="exploreBtn" class="nav-btn">🔍</button>
+    <button id="createBtn" class="nav-btn">➕</button>
+    <button id="profileBtn" class="nav-btn">👤</button>
+  </div>
+</nav>
 
-followBtn.addEventListener("click", ()=>{
-  following = !following;
-  followBtn.textContent = following ? "Following" : "Follow";
-  followers += following ? 1 : -1;
-  followersCount.textContent = followers + " followers";
-});
+<!-- PAGES -->
+<div id="homePage" class="page">Home Feed Coming Soon</div>
 
-// Create posts
-const postUpload = document.getElementById("post-upload");
-const postCaption = document.getElementById("post-caption");
-const postBtn = document.getElementById("post-btn");
-const feedGrid = document.getElementById("feed-grid");
+<div id="explorePage" class="page">
+  <h2>Explore</h2>
+  <p>Discover amazing content from the PocketWorld community</p>
+  <div class="explore-empty">No posts yet</div>
+</div>
 
-postBtn.addEventListener("click", ()=>{
-  const files = postUpload.files;
-  if(!files.length) return alert("Select at least one image/video");
-  
-  Array.from(files).forEach(file=>{
-    const post = document.createElement("div");
-    post.className = "post";
+<div id="profilePage" class="page">
+  <div class="profile-header">
+    <img id="header-image" class="header-media" style="display:none;">
+    <video id="header-video" class="header-media" style="display:none;" autoplay loop muted></video>
 
-    let media;
-    if(file.type.startsWith("image/")){
-      media = document.createElement("img");
-      media.src = URL.createObjectURL(file);
-    } else if(file.type.startsWith("video/")){
-      media = document.createElement("video");
-      media.src = URL.createObjectURL(file);
-      media.controls = true;
-    }
-    post.appendChild(media);
+    <label class="header-upload-btn">
+      Upload Header
+      <input type="file" id="header-upload" accept="image/*,video/*">
+    </label>
+  </div>
 
-    if(postCaption.value){
-      const caption = document.createElement("p");
-      caption.textContent = postCaption.value;
-      post.appendChild(caption);
-    }
+  <div class="profile-info">
+    <div class="profile-pic">M</div>
+    <h2 class="profile-name">mahdereassefa</h2>
+    <p class="profile-username">@mahdereassefa</p>
 
-    const likeBtn = document.createElement("button");
-    likeBtn.textContent = "Like";
-    let liked = false;
-    likeBtn.addEventListener("click", ()=>{
-      liked = !liked;
-      likeBtn.textContent = liked ? "Liked" : "Like";
-    });
-    post.appendChild(likeBtn);
+    <div class="stats">
+      <span>0 Posts</span>
+      <span>0 Followers</span>
+      <span>0 Following</span>
+    </div>
+  </div>
 
-    feedGrid.prepend(post);
-  });
+  <h3 class="posts-title">Posts</h3>
+  <div class="posts-area"></div>
+</div>
 
-  postUpload.value = "";
-  postCaption.value = "";
-});
+<!-- CREATE POST MODAL -->
+<div id="createModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Create New Post</h2>
+      <button id="closeCreate" class="close-btn">×</button>
+    </div>
+
+    <div class="create-tabs">
+      <button class="tab active">Photo</button>
+      <button class="tab">Video</button>
+      <button class="tab">Collage</button>
+    </div>
+
+    <div class="upload-box">
+      <input type="file" id="uploadInput" accept="image/*,video/*">
+      <div id="previewWrap"></div>
+    </div>
+
+    <textarea id="caption" placeholder="Write a caption..."></textarea>
+
+    <div class="modal-actions">
+      <button id="cancelPost" class="cancel-btn">Cancel</button>
+      <button id="postBtn" class="post-btn">Post</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
